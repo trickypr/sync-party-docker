@@ -6,7 +6,7 @@ if [ ! -f .env ]; then
   # Generate a random 30 character secret.
   # https://unix.stackexchange.com/questions/230673/how-to-generate-a-random-string
   SECRET=$(
-    tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c 30
+    tr -dc A-Za-z0-9 </dev/urandom | head -c 30
     echo
   )
 

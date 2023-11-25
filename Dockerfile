@@ -7,6 +7,7 @@ RUN apk add --no-cache git
 RUN git clone --depth 1 --branch "v${VERSION}" https://github.com/steeelydan/sync-party
 WORKDIR /build/sync-party
 
+COPY ./.env.build ./.env
 RUN npm ci
 RUN npm run prod:server:build
 RUN npm run prod:client:build
