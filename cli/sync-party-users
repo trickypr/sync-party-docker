@@ -1,0 +1,23 @@
+#!/bin/bash
+
+USERS=("$@")
+EXISTING_USERS=$(sync-party list-users | tail -n +2 | jq -r '.[].username | @sh')
+
+for USER in "${USERS[@]}"; do
+  PASSWORD=$(
+    tr -dc A-Za-z0-9 </dev/urandom | head -c 13
+    echo
+  )
+  if [[ $EXISTING_USERS =~ $USER ]]; then
+    # Update password
+    echo "$USER (Updated): $PASSWORD"
+    echo ""
+
+    sync-party change-password "$USER" "$PASSWORD" 1>/dev/null
+  else
+    echo "$USER (Created): $PASSWORD"
+    echo ""
+
+    sync-party create-user "$USER" "$PASSWORD" 1>/dev/null
+  fi
+done

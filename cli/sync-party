@@ -1,0 +1,6 @@
+#!/bin/bash
+
+IMAGE_ID="ghcr.io/trickypr/sync-party-docker:main"
+CONTAINER_ID=$(docker ps -q --filter ancestor=$IMAGE_ID)
+
+docker exec -it "$CONTAINER_ID" node /app/build/server/admin-cli/admin.js "$@"
