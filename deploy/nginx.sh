@@ -11,18 +11,6 @@ server {
   server_tokens off;
 
   location / {
-    return 301 https://$DOMAIN\$request_uri;
-  }
-}
-
-server {
-  listen 443 default_server ssl http2;
-  listen [::]:443 ssl http2;
-
-  server_name $DOMAIN;
-  server_tokens off;
-
-  location / {
     proxy_pass http://localhost:3000;
     proxy_set_header X-Forwarded-Proto \$scheme;
   }

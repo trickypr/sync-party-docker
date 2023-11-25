@@ -2,6 +2,9 @@
 
 echo "This script will download & install Sync Party using docker."
 
+echo "Esnure unzip is installed."
+apt install unzip
+
 (
   cd /tmp || exit
   wget https://github.com/trickypr/sync-party-docker/archive/refs/heads/main.zip
