@@ -26,5 +26,7 @@ FROM node:lts-alpine
 
 WORKDIR /app
 COPY --from=build /build/sync-party .
+# Remove the build .env file
+RUN rm -rf .env 
 
 CMD [ "ash", "./run.sh" ]
