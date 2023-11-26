@@ -3,7 +3,7 @@ FROM node:lts-alpine AS build
 WORKDIR /build
 
 RUN apk add --no-cache git
-RUN git clone --depth 1 --branch "master" https://github.com/steeelydan/sync-party
+RUN git clone --depth 1 --branch "master" https://github.com/trickypr/sync-party
 WORKDIR /build/sync-party
 
 COPY ./.env.build ./.env

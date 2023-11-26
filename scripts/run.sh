@@ -22,4 +22,4 @@ fi
 [ -e data/ ] || mkdir data
 echo "Debug: Node version: $(node --version)"
 
-node ./build/server/index.js
+node ./build/server/server.js
