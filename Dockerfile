@@ -1,10 +1,9 @@
 FROM node:lts-alpine AS build
 
-ARG VERSION="0.12.2"
 WORKDIR /build
 
 RUN apk add --no-cache git
-RUN git clone --depth 1 --branch "v${VERSION}" https://github.com/steeelydan/sync-party
+RUN git clone --depth 1 --branch "master" https://github.com/steeelydan/sync-party
 WORKDIR /build/sync-party
 
 COPY ./.env.build ./.env
